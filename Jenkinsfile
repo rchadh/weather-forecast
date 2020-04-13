@@ -1,8 +1,7 @@
 pipeline {
     
-  if (isUnix()) --> sh "command"
+if (isUnix()) --> sh "command"
      else --> bat "command"
-    
     agent any
     stages {
         stage('Build') { 
