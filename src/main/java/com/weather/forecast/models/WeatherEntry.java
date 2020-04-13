@@ -5,9 +5,13 @@ import java.time.Instant;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherEntry implements Serializable {
 
 	/**
@@ -19,9 +23,13 @@ public class WeatherEntry implements Serializable {
 
 	private double min_temperature;
 	
-		private double max_temperature;
+	private double max_temperature;
 
 	private String weatherMain;
+	
+	private String suggestion;
+	
+	private String date;
 
 
 	@JsonProperty("timestamp")
@@ -72,6 +80,22 @@ public class WeatherEntry implements Serializable {
 
 	public void setMax_temperature(double maxTemp) {
 		this.max_temperature=maxTemp;
+	}
+
+	public String getSuggestion() {
+		return suggestion;
+	}
+
+	public void setSuggestion(String suggestion) {
+		this.suggestion = suggestion;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 	
 }

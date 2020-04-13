@@ -5,9 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherForecast implements Serializable {
 
 	/**
@@ -17,7 +21,7 @@ public class WeatherForecast implements Serializable {
 
 	private String name;
 
-	private List<WeatherEntry> entries = new ArrayList<>();
+	private List<WeatherEntry> entries;
 	private WeatherEntry entriesObject; 
 
 	public String getName() {
@@ -45,6 +49,10 @@ public class WeatherForecast implements Serializable {
 
 	public void setEntriesObject(WeatherEntry entries) {
 		this.entriesObject = entries;
+	}
+	
+	public WeatherEntry getEntriesObject() {
+		return this.entriesObject;
 	}
 
 }
