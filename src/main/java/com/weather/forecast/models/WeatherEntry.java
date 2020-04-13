@@ -64,4 +64,14 @@ public class WeatherEntry implements Serializable {
 		setWeatherMain((String) weather.get("main"));
 	}
 
+	
+	
+	public void setMin_temperature(double minTemp) {
+		this.min_temperature=minTemp;
+	}
+
+	public void setMax_temperature(double maxTemp) {
+		this.max_temperature=maxTemp;
+	}
+	
 }
