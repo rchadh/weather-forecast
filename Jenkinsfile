@@ -1,13 +1,14 @@
-pipeline {
-    
-if (isUnix()) --> sh "command"
-     else --> bat "command"
-    agent any
-    stages {
-        stage('Build') { 
-            steps {
-                sh 'mvn -B -DskipTests clean package' 
-            }
-        }
-    }
-} 
+node {
+   
+   stage('SCM Checkout'){    
+		git 'https://github.com/rchadh/weather-forecast '
+   
+   }
+   
+   stage('Compile-Package'){
+	      sh 'mvn package'
+   }
+  
+   
+  }
+  
