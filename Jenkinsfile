@@ -2,7 +2,7 @@ node {
    def mvnHome
    stage('Preparation') { // for display purposes
       // Get some code from a GitHub repository
-      git 'https://github.optum.com/mhastie/simple-maven-project-with-tests.git' //replace this with weather-forecast git url
+      git 'https://github.com/rchadh/weather-forecast.git' //replace this with weather-forecast git url
       // Get the Maven tool.
       // ** NOTE: This 'M3' Maven tool must be configured
       // **       in the global configuration.           
