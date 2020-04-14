@@ -1,14 +1,17 @@
-node {
-   
-   stage('SCM Checkout'){    
-		git 'https://github.com/rchadh/weather-forecast '
-   
-   }
-   
-   stage('Compile-Package'){
-	      sh 'mvn package'
-   }
-  
-   
-  }
-  
+pipeline {
+    agent any
+	
+	stages{
+        stage('Build'){
+            steps {
+                sh 'mvn clean package -DskipTests=true'
+            }
+            post {
+                success {
+                    echo 'Now Archiving...'
+                    archiveArtifacts artifacts: '**/target/*.jar'
+                }
+            }
+        }
+	}
+}
